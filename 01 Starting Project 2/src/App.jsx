@@ -5,7 +5,6 @@ import Modal from './components/Modal';
 import NewTask from './components/NewTask';
 import TaskControl from './components/TaskControl';
 import TaskList from './components/TaskList';
-import logo from "./assets/logo.png";
 
 function App() {
   const [isAddingTask, setIsAddingTask] = useState(false);
@@ -53,12 +52,11 @@ function App() {
       )}
       <Header />
       <main>
-        <img src={logo} alt="A list"/>
         <TaskControl
-            onStartAddTask={startAddTaskHandler}
-            onSetFilter={setFilterHandler}
+          onStartAddTask={startAddTaskHandler}
+          onSetFilter={setFilterHandler}
         />
-        <TaskList tasks={displayedTasks}/>
+        <TaskList tasks={displayedTasks} />
       </main>
     </>
   );
