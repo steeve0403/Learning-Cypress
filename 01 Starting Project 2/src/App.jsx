@@ -21,7 +21,6 @@ function App() {
   function startAddTaskHandler() {
     setIsAddingTask(true);
   }
-
   function cancelAddTaskHandler() {
     setIsAddingTask(false);
   }
