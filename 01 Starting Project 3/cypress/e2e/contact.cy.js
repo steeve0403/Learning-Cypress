@@ -9,10 +9,12 @@ describe('contact form', () => {
             expect(el.attr('disabled')).to.be.undefined;
             expect(el.text()).to.eq('Send Message')
         });
+        cy.screenshot(); // Screenshots are available for each stage of the test, providing a detailed analysis of the test sequence.
         cy.get('[data-cy="contact-input-email"]').type('test@example.com{enter}');
         // cy.get('[data-cy="contact-btn-submit"]')
         //     .contains('Send Message')
         //     .should('not.have.attr', 'disabled');
+        cy.screenshot(); // Screenshots are available for each stage of the test, providing a detailed analysis of the test sequence.
         cy.get('[data-cy="contact-btn-submit"]').as('submitBtn');
         // cy.get('@submitBtn').click();
         cy.get('@submitBtn').contains('Sending...');
@@ -47,3 +49,4 @@ describe('contact form', () => {
             .and('match', /invalid/);
     });
 });
+
