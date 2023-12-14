@@ -1,5 +1,10 @@
 /// <reference types="Cypress" />
 
+/*
+Preferential use of custom attributes,
+such as the data-cy attribute,
+for unique selectors that are less prone to errors.
+*/
 describe('page navigation', () => {
     it('should navigate between pages', () => {
         cy.visit('http://localhost:5173/');
