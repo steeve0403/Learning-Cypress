@@ -12,3 +12,5 @@ export default defineConfig({
     },
   },
 });
+
+//  When using npx cypress run, you can set the browser with --browser by choosing between Chrome or Firefox.
