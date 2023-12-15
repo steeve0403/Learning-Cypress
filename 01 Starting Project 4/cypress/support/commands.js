@@ -36,3 +36,4 @@ Cypress.Commands.addQuery('getById', (id) => {
         return getFn(); // Executed when Cypress actually runs your test instructions (i.e, after queuing them)
     }
 });
+
