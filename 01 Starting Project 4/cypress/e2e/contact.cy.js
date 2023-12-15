@@ -7,6 +7,13 @@ describe('contact form', () => {
   beforeEach(() => {
     // Runs before every test (i.e., it's repeated)
     cy.visit('/about'); // http://localhost:5173/about
+    // Seeding a database
+  });
+  afterEach(() => {
+    // Runs after every test
+  });
+  after(() => {
+    // Runs after all tests (i.e., only once)
   });
 
   it('should submit the form', () => {
@@ -22,7 +29,7 @@ describe('contact form', () => {
     //   .contains('Send Message')
     //   .should('not.have.attr', 'disabled');
     cy.screenshot();
-    cy.get('[data-cy="contact-btn-submit"]').as('submitBtn');
+    cy.get('[data-cy="cotact-btn-submit"]').as('submitBtn');
     // cy.get('@submitBtn').click();
     cy.get('@submitBtn').contains('Sending...');
     cy.get('@submitBtn').should('have.attr', 'disabled');
