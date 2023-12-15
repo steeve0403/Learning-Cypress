@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('submitForm', () => {
+    cy.get('form button[type="submit"]').click();
+});
+
+// A custom order should be reserved for repetitive cases with complex logic for better clarity.
+// Avoid putting everything in a custom order to maintain the readability of the tests.
