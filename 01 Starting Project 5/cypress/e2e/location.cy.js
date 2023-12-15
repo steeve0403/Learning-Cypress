@@ -4,8 +4,8 @@
 describe('share location', () => {
   it('should fetch the user location', () => {
     cy.visit('/').then((win) => {
-      cy.stub(win.navigator.geolocation, 'getCurrentPosition').as(
-          'getUserPosition'); // The Cypress stub method replaces an existing method.
+      cy.stub(win.navigator.geolocation, 'getCurrentPosition').as( // The Cypress stub method replaces an existing method.
+          'getUserPosition'); // When replacing with an empty function, the callback-dependent user interface (UI) update does not occur.
     });
     cy.get('[data-cy="get-loc-btn"]').click();
     cy.get('@getUserPosition').should('have.been.called');
