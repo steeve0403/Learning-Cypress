@@ -24,9 +24,15 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+// A custom order should be reserved for repetitive cases with complex logic for better clarity.
+// Avoid putting everything in a custom order to maintain the readability of the tests.
 Cypress.Commands.add('submitForm', () => {
     cy.get('form button[type="submit"]').click();
 });
 
-// A custom order should be reserved for repetitive cases with complex logic for better clarity.
-// Avoid putting everything in a custom order to maintain the readability of the tests.
+Cypress.Commands.addQuery('getById', (id) => {
+    const getFn = cy.now('get', `[data-cy="${id}"]`); // Execute when you call getById() in your tests
+    return () => {
+        return getFn(); // Executed when Cypress actually runs your test instructions (i.e, after queuing them)
+    }
+});
