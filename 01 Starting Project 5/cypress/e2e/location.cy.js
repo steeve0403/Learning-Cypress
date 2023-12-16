@@ -17,6 +17,8 @@ describe('share location', () => {
       cy.stub(win.navigator.clipboard, 'writeText')
           .as('saveToClipboard')
           .resolves();
+      cy.spy(win.localStorage, 'setItem').as('storeLocation'); // The focus is on checking method calls rather than return values for browser APIs.
+      cy.spy(win.localStorage, 'getItem').as('getStoreLocation');
     }); // Successful testing after dummy implementation of getCurrentPosition
   });
   it('should fetch the user location', () => {
@@ -37,6 +39,14 @@ describe('share location', () => {
           'have.been.calledWithMatch',
           new RegExp(`${latitude}.*${longitude}.*${encodeURI('John Doe')}`) // URL encoding to match the required format when checking arguments.
       );
+      cy.get('@storeLocation').should(
+          'have.been.calledWithMatch',
+          /John Doe/,
+          new RegExp(`${latitude}.*${longitude}.*${encodeURI('John Doe')}`)
+      );
     });
+    cy.get('@storeLocation').should('have.been.called'); // Spies can be used to check if certain methods have been called, such as 'have.been.called'.
+    cy.get('[data-cy="get-loc-btn"]').click();
+    cy.get('@getStoreLocation').should('have.been.called');
   });
 });
