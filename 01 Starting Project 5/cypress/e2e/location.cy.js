@@ -3,6 +3,7 @@
 // The goal is not to test whether the browser is recovering the location correctly, but rather whether the application is using the data correctly.
 describe('share location', () => {
   beforeEach(() => { //  Using a hook (beforeEach) to reuse a stub between tests.
+    cy.clock(); // Using the clock method on object cy to indicate to Cypress that we want to manipulate the clock.
     cy.fixture('user-location.json').as('userLocation'); //  Using cy.fixture to load and access data.
     cy.visit('/').then((win) => {
       cy.get('@userLocation').then(fakePosition => {
@@ -50,6 +51,7 @@ describe('share location', () => {
     cy.get('@getStoreLocation').should('have.been.called');
     cy.get('[data-cy="info-message"]').should('be.visible');
     cy.get('[data-cy="info-message"]').should('have.class', 'visible');
+    cy.tick(2000); // The tick method allows to advance the time by a few milliseconds, simulating the flow of time in the tests.
     cy.get('[data-cy="info-message"]').should('not.be.visible');
   });
 });
