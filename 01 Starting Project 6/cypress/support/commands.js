@@ -47,6 +47,6 @@ Cypress.on('uncaught:exception', (err) => {
     err.message.includes('hydrating') ||
     err.message.includes('Hydration')
   ) {
-    return false;
+    return false; // Handling errors specific to React and the Remix library to avoid unnecessary test failures.
   }
 });

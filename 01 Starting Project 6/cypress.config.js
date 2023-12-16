@@ -16,3 +16,5 @@ export default defineConfig({
     },
   },
 });
+
+// Running the development server and Cypress Studio simultaneously with the "npm run test:open" command.
