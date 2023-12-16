@@ -7,7 +7,7 @@ export default defineConfig({
     baseUrl: 'http://localhost:3000',
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      on('task', {
+      on('task', { // To maintain test isolation, it is essential to sow the database before each test run.
         async seedDatabase() {
           await seed();
           return null;
