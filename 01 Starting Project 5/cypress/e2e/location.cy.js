@@ -46,7 +46,10 @@ describe('share location', () => {
       );
     });
     cy.get('@storeLocation').should('have.been.called'); // Spies can be used to check if certain methods have been called, such as 'have.been.called'.
-    cy.get('[data-cy="get-loc-btn"]').click();
+    cy.get('[data-cy="share-loc-btn"]').click();
     cy.get('@getStoreLocation').should('have.been.called');
+    cy.get('[data-cy="info-message"]').should('be.visible');
+    cy.get('[data-cy="info-message"]').should('have.class', 'visible');
+    cy.get('[data-cy="info-message"]').should('not.be.visible');
   });
 });
