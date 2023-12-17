@@ -17,3 +17,6 @@ describe('Newsletter', () => {
 // Using cy.intercept, it is possible to intercept and block outgoing HTTP requests, thus avoiding actually sending them to the backend.
 // The interceptor configuration includes the definition of the URL to monitor and the type of request to block, such as POST requests to "/newsletter".
 //  Adding an argument to the interceptor blocks the request and provides dummy data in response, speeding up testing.
+
+
+
