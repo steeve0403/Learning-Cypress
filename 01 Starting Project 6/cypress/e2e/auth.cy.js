@@ -28,4 +28,11 @@ describe('Auth', () => {
         // Cleaning cookies between tests due to the isolation of tests by Cypress.
         // Verify the success of the connection by ensuring the redirection to/takeaways and the existence of a non-empty session cookie.
     });
+
+    it('should logout', () => { // The need to test logout and create new features involves repeating the login code.
+        cy.login(); // The "login" command is added in the "commands.js" file to encapsulate the connection steps.
+        cy.contains('Logout').click();
+        cy.location('pathname').should('eq', '/');
+        cy.getCookie('__session').its('value').should('be.empty');
+    });
 });
