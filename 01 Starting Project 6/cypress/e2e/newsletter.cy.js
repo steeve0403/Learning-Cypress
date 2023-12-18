@@ -26,6 +26,11 @@ describe('Newsletter', () => {
     });
 
     it('should successfully create a new contact', () => {
+        // Ability to test the backend independently of the frontend using Cypress to send requests directly to the backend APIs.
+        // Cypress offers the CY request method to send queries from tests without using the frontend interface.
+        // Configure queries with an object including body, headers, method, and URL to specifically test the backend.
+        // Evaluating the server response with the then method to ensure that everything is working as expected, for example, checking status code 201.
+        //  The use of this Cypress feature allows direct testing of API endpoints without interaction with the user interface.
         cy.request({
             method: 'POST',
             url: '/newsletter',
