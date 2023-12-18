@@ -17,12 +17,23 @@ describe('Newsletter', () => {
 //  Adding an argument to the interceptor blocks the request and provides dummy data in response, speeding up testing.
 
     it('should display validation errors', () => {
-        cy.intercept('POST','/newsletter*', {message: 'Email exists already.'}).as('subscribe');
+        cy.intercept('POST','/newsletter*', {message: 'Email exists already.'}).as('subscribe'); // Use the concept of interceptor to avoid the actual HTTP request and test the behavior of the application.
         cy.visit('/');
         cy.get('[data-cy="newsletter-email"]').type('test@example.com');
         cy.get('[data-cy="newsletter-submit"]').click();
         cy.wait('@subscribe');
         cy.contains('Email exists already.');
+    });
+
+    it('should successfully create a new contact', () => {
+        cy.request({
+            method: 'POST',
+            url: '/newsletter',
+            body: { email: 'test@example.com'},
+            form: true
+        }).then(res => {
+            expect(res.status).to.eq(201);
+        });
     });
 });
 
