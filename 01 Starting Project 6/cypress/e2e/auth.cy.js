@@ -25,6 +25,7 @@ describe('Auth', () => {
         cy.get('[data-cy="auth-submit"]').click();
         cy.location('pathname').should('eq', '/takeaways');
         cy.getCookie('__session').its('value').should('not.be.empty');
-
+        // Cleaning cookies between tests due to the isolation of tests by Cypress.
+        // Verify the success of the connection by ensuring the redirection to/takeaways and the existence of a non-empty session cookie.
     });
 });
